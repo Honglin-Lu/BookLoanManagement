@@ -4,14 +4,16 @@ using BookLoanManagement.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookLoanManagement.Server.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211118031853_SeededDefaultRoleData")]
+    partial class SeededDefaultRoleData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -121,8 +123,8 @@ namespace BookLoanManagement.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 17, 22, 49, 42, 94, DateTimeKind.Local).AddTicks(4515),
-                            DateUpdated = new DateTime(2021, 11, 17, 22, 49, 42, 97, DateTimeKind.Local).AddTicks(5406),
+                            DateCreated = new DateTime(2021, 11, 17, 22, 18, 52, 588, DateTimeKind.Local).AddTicks(5979),
+                            DateUpdated = new DateTime(2021, 11, 17, 22, 18, 52, 591, DateTimeKind.Local).AddTicks(3914),
                             Name = "Anna",
                             UpdatedBy = "System"
                         },
@@ -130,8 +132,8 @@ namespace BookLoanManagement.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 17, 22, 49, 42, 97, DateTimeKind.Local).AddTicks(6755),
-                            DateUpdated = new DateTime(2021, 11, 17, 22, 49, 42, 97, DateTimeKind.Local).AddTicks(6770),
+                            DateCreated = new DateTime(2021, 11, 17, 22, 18, 52, 591, DateTimeKind.Local).AddTicks(4859),
+                            DateUpdated = new DateTime(2021, 11, 17, 22, 18, 52, 591, DateTimeKind.Local).AddTicks(4870),
                             Name = "Mark",
                             UpdatedBy = "System"
                         });
@@ -210,8 +212,8 @@ namespace BookLoanManagement.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(7773),
-                            DateUpdated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(7790),
+                            DateCreated = new DateTime(2021, 11, 17, 22, 18, 52, 593, DateTimeKind.Local).AddTicks(120),
+                            DateUpdated = new DateTime(2021, 11, 17, 22, 18, 52, 593, DateTimeKind.Local).AddTicks(133),
                             Name = "Romance",
                             UpdatedBy = "System"
                         },
@@ -219,8 +221,8 @@ namespace BookLoanManagement.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(8223),
-                            DateUpdated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(8235),
+                            DateCreated = new DateTime(2021, 11, 17, 22, 18, 52, 593, DateTimeKind.Local).AddTicks(450),
+                            DateUpdated = new DateTime(2021, 11, 17, 22, 18, 52, 593, DateTimeKind.Local).AddTicks(458),
                             Name = "Historical",
                             UpdatedBy = "System"
                         },
@@ -228,8 +230,8 @@ namespace BookLoanManagement.Server.Data.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(8238),
-                            DateUpdated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(8240),
+                            DateCreated = new DateTime(2021, 11, 17, 22, 18, 52, 593, DateTimeKind.Local).AddTicks(462),
+                            DateUpdated = new DateTime(2021, 11, 17, 22, 18, 52, 593, DateTimeKind.Local).AddTicks(464),
                             Name = "Dictionary",
                             UpdatedBy = "System"
                         },
@@ -237,8 +239,8 @@ namespace BookLoanManagement.Server.Data.Migrations
                         {
                             Id = 4,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(8243),
-                            DateUpdated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(8245),
+                            DateCreated = new DateTime(2021, 11, 17, 22, 18, 52, 593, DateTimeKind.Local).AddTicks(466),
+                            DateUpdated = new DateTime(2021, 11, 17, 22, 18, 52, 593, DateTimeKind.Local).AddTicks(468),
                             Name = "Science",
                             UpdatedBy = "System"
                         });
@@ -348,8 +350,8 @@ namespace BookLoanManagement.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(2149),
-                            DateUpdated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(2182),
+                            DateCreated = new DateTime(2021, 11, 17, 22, 18, 52, 592, DateTimeKind.Local).AddTicks(6614),
+                            DateUpdated = new DateTime(2021, 11, 17, 22, 18, 52, 592, DateTimeKind.Local).AddTicks(6631),
                             Name = "BYM",
                             UpdatedBy = "System"
                         },
@@ -357,8 +359,8 @@ namespace BookLoanManagement.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(2799),
-                            DateUpdated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(2814),
+                            DateCreated = new DateTime(2021, 11, 17, 22, 18, 52, 592, DateTimeKind.Local).AddTicks(6960),
+                            DateUpdated = new DateTime(2021, 11, 17, 22, 18, 52, 592, DateTimeKind.Local).AddTicks(6969),
                             Name = "SXS",
                             UpdatedBy = "System"
                         });
@@ -496,15 +498,15 @@ namespace BookLoanManagement.Server.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4b5e17ab-be0a-4383-85dc-f7f094b10268",
-                            ConcurrencyStamp = "c408f7c2-c5a8-490f-b455-a1785c061f05",
+                            Id = "70f196db-a022-4f11-927c-6075a058ebd4",
+                            ConcurrencyStamp = "a485e425-7ed9-4f06-ae67-bc8118c8ae4f",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "b119ac9e-b56b-4047-a385-27a12f71ecef",
-                            ConcurrencyStamp = "b2e08ed5-eebf-49c8-ba9e-bf89f8aab5b9",
+                            Id = "b1410b77-55e7-4075-ab0c-64bb5f9f9561",
+                            ConcurrencyStamp = "20b12446-6200-414c-8d99-4837f06700d7",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });

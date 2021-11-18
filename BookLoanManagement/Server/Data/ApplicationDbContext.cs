@@ -1,4 +1,6 @@
-﻿using BookLoanManagement.Server.Models;
+﻿using BookLoanManagement.Server.Configurations.Entities;
+using BookLoanManagement.Server.Models;
+using BookLoanManagement.Shared.Domain;
 using IdentityServer4.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +18,24 @@ namespace BookLoanManagement.Server.Data
             DbContextOptions options,
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
+        }
+
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Loan> Loans { get; set; }
+        public DbSet<Publisher> Publishers { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.ApplyConfiguration(new AuthorSeedConfiguration());
+            builder.ApplyConfiguration(new PublisherSeedConfiguration());
+            builder.ApplyConfiguration(new CategorySeedConfiguration());
+            builder.ApplyConfiguration(new RoleSeedConfiguration());
         }
     }
 }

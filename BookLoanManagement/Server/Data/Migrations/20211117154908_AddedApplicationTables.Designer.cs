@@ -4,14 +4,16 @@ using BookLoanManagement.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookLoanManagement.Server.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211117154908_AddedApplicationTables")]
+    partial class AddedApplicationTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -115,26 +117,6 @@ namespace BookLoanManagement.Server.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Authors");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 17, 22, 49, 42, 94, DateTimeKind.Local).AddTicks(4515),
-                            DateUpdated = new DateTime(2021, 11, 17, 22, 49, 42, 97, DateTimeKind.Local).AddTicks(5406),
-                            Name = "Anna",
-                            UpdatedBy = "System"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 17, 22, 49, 42, 97, DateTimeKind.Local).AddTicks(6755),
-                            DateUpdated = new DateTime(2021, 11, 17, 22, 49, 42, 97, DateTimeKind.Local).AddTicks(6770),
-                            Name = "Mark",
-                            UpdatedBy = "System"
-                        });
                 });
 
             modelBuilder.Entity("BookLoanManagement.Shared.Domain.Book", b =>
@@ -204,44 +186,6 @@ namespace BookLoanManagement.Server.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(7773),
-                            DateUpdated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(7790),
-                            Name = "Romance",
-                            UpdatedBy = "System"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(8223),
-                            DateUpdated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(8235),
-                            Name = "Historical",
-                            UpdatedBy = "System"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(8238),
-                            DateUpdated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(8240),
-                            Name = "Dictionary",
-                            UpdatedBy = "System"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(8243),
-                            DateUpdated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(8245),
-                            Name = "Science",
-                            UpdatedBy = "System"
-                        });
                 });
 
             modelBuilder.Entity("BookLoanManagement.Shared.Domain.Customer", b =>
@@ -342,26 +286,6 @@ namespace BookLoanManagement.Server.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Publishers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(2149),
-                            DateUpdated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(2182),
-                            Name = "BYM",
-                            UpdatedBy = "System"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(2799),
-                            DateUpdated = new DateTime(2021, 11, 17, 22, 49, 42, 99, DateTimeKind.Local).AddTicks(2814),
-                            Name = "SXS",
-                            UpdatedBy = "System"
-                        });
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.DeviceFlowCodes", b =>
@@ -492,22 +416,6 @@ namespace BookLoanManagement.Server.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "4b5e17ab-be0a-4383-85dc-f7f094b10268",
-                            ConcurrencyStamp = "c408f7c2-c5a8-490f-b455-a1785c061f05",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        },
-                        new
-                        {
-                            Id = "b119ac9e-b56b-4047-a385-27a12f71ecef",
-                            ConcurrencyStamp = "b2e08ed5-eebf-49c8-ba9e-bf89f8aab5b9",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
