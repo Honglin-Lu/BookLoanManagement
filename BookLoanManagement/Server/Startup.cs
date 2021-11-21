@@ -1,5 +1,7 @@
 using BookLoanManagement.Server.Data;
+using BookLoanManagement.Server.IRepository;
 using BookLoanManagement.Server.Models;
+using BookLoanManagement.Server.Repository;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -40,6 +42,8 @@ namespace BookLoanManagement.Server
 
             services.AddAuthentication()
                 .AddIdentityServerJwt();
+
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();
