@@ -12,7 +12,7 @@ using BookLoanManagement.Server.IRepository;
 namespace BookLoanManagement.Server.Controllers
 {
     //[Authorize]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CustomersController : ControllerBase
     {

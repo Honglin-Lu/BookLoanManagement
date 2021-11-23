@@ -12,7 +12,7 @@ using BookLoanManagement.Server.IRepository;
 namespace BookLoanManagement.Server.Controllers
 {
     //[Authorize]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class BooksController : ControllerBase
     {
@@ -27,7 +27,8 @@ namespace BookLoanManagement.Server.Controllers
         [HttpGet]
         public async Task<IActionResult> GetBooks()
         {
-            var books = await _unitOfWork.Books.GetAll();
+            var includes = new List<string> { "Author", "Publisher", "Category" };
+            var books = await _unitOfWork.Books.GetAll(includes : includes);
             return Ok(books);
         }
 
@@ -35,6 +36,7 @@ namespace BookLoanManagement.Server.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBook(int id)
         {
+            var includes = new List<string> { "Author", "Publisher", "Category", "Loans" };
             var book = await _unitOfWork.Books.Get(q => q.Id == id);
 
             if (book == null)

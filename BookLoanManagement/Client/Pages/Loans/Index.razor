@@ -1,0 +1,77 @@
+﻿@page "/loans/"
+@inject HttpClient _client
+@inject IJSRuntime js
+@attribute [Authorize]
+
+
+<h3 class="card-title">Customer Loans</h3>
+<hr />
+<br />
+
+@if (Loans == null)
+{
+
+
+    <div class="alert alert-info">Loading loans......</div>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Book Title</th>
+                <th>Customer Name</th>
+                <th>Date</th>
+                <th>Duration in Days</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var loan in Loans)
+            {
+            <tr>
+                <td>@loan.Book.Title</td>
+                <td>@loan.Customer.Name</td>
+                <td>@loan.DateCreated.Date.ToString("dd MMMM yyyy")</td>
+                <td>@((loan.DateIn - loan.DateOut).TotalDays.ToString();)</td>
+                <td>
+                    <a href="/loans/view/@loan.Id" class="btn btn-primary">
+                        <span class="oi oi-book"></span>
+                    </a>
+                    <a href="/loanss/edit/@loan.Id" class="btn btn-warning">
+                        <span class="oi oi-pencil"></span>
+                    </a>
+                    <button class="btn btn-danger" @onclick="@(()=>Delete(loan.Id))">
+                        <span class="oi oi-delete"></span>
+                    </button>
+                </td>
+            </tr>
+            }
+        </tbody>
+
+    </table>
+}
+
+@code {
+    private List<Loan> Loans;
+
+    protected async override Task OnInitializedAsync()
+    {
+        Loans = await _client.GetFromJsonAsync<List<Loan>>($"{Endpoints.LoansEndpoint}");
+    }
+
+    async Task Delete(int loanId)
+    {
+        var loan = Loans.First(q => q.Id == loanId);
+
+        var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {loan.Book.Title} borrowed by {loan.Customer.Name}?");
+        @if (confirm)
+        {
+
+            await _client.DeleteAsync($"{Endpoints.LoansEndpoint}/{loanId}");
+            await OnInitializedAsync();
+        }
+
+
+    }
+}
