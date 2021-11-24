@@ -1,0 +1,29 @@
+﻿@page "/authors/create/"
+
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+
+<h3 class="card-title">Create New Author</h3>
+<hr />
+<br />
+
+<FormComponent ButtonText="Create Author" OnValidSubmit="@CreateAuthor" author="author" />
+
+@code {
+    Author author = new Author();
+   
+
+    protected async override Task OnInitializedAsync()
+    {
+        
+    }
+
+    private async Task CreateAuthor()
+    {
+        // Pass all related data to Api to create the author object
+        await _client.PostAsJsonAsync(Endpoints.AuthorsEndpoint, author);
+        // return to the book list page
+        _navManager.NavigateTo("/authors/");
+    }
+}

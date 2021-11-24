@@ -7,6 +7,13 @@
 <h3 class="card-title">Customer Loans</h3>
 <hr />
 <br />
+<a href="/loans/create" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+    Create New Loan
+</a>
+<br />
+<br />
+
 
 @if (Loans == null)
 {
@@ -16,7 +23,7 @@
 }
 else
 {
-    <table class="table table-responsive">
+    <table class="table">
         <thead>
             <tr>
                 <th>Book Title</th>
@@ -29,23 +36,23 @@ else
         <tbody>
             @foreach (var loan in Loans)
             {
-            <tr>
-                <td>@loan.Book.Title</td>
-                <td>@loan.Customer.Name</td>
-                <td>@loan.DateCreated.Date.ToString("dd MMMM yyyy")</td>
-                <td>@((loan.DateIn - loan.DateOut).TotalDays.ToString();)</td>
-                <td>
-                    <a href="/loans/view/@loan.Id" class="btn btn-primary">
-                        <span class="oi oi-book"></span>
-                    </a>
-                    <a href="/loanss/edit/@loan.Id" class="btn btn-warning">
-                        <span class="oi oi-pencil"></span>
-                    </a>
-                    <button class="btn btn-danger" @onclick="@(()=>Delete(loan.Id))">
-                        <span class="oi oi-delete"></span>
-                    </button>
-                </td>
-            </tr>
+                <tr>
+                    <td>@loan.Book.Title</td>
+                    <td>@loan.Customer.Name</td>
+                    <td>@loan.DateCreated.Date.ToString("dd MMMM yyyy")</td>
+                    <td>@((loan.DateIn - loan.DateOut).TotalDays.ToString())</td>
+                    <td>
+                        <a href="/loans/view/@loan.Id" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <a href="/loanss/edit/@loan.Id" class="btn btn-warning">
+                            <span class="oi oi-pencil"></span>
+                        </a>
+                        <button class="btn btn-danger" @onclick="@(()=>Delete(loan.Id))">
+                            <span class="oi oi-delete"></span>
+                        </button>
+                    </td>
+                </tr>
             }
         </tbody>
 

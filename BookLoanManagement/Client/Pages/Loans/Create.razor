@@ -1,0 +1,27 @@
+﻿@page "/loans/create/"
+
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+
+<h3 class="card-title">Create New Loan</h3>
+<hr />
+<br />
+
+<FormComponent ButtonText="Create Loan" OnValidSubmit="@CreateLoan" loan="loan" />
+
+@code {
+    Loan loan = new Loan
+    {
+        DateOut = DateTime.Now.Date
+    };
+
+
+    private async Task CreateLoan()
+    {
+        // Pass all related data to Api to create the loan object
+        await _client.PostAsJsonAsync(Endpoints.LoansEndpoint, loan);
+        // return to the book list page
+        _navManager.NavigateTo("/loans/");
+    }
+}

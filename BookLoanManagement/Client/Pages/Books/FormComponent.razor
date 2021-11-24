@@ -1,0 +1,88 @@
+﻿@inject HttpClient _client
+
+<EditForm Model="@book" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label>Title: </label>
+        <div>
+            <InputText @bind-Value="@book.Title" class="form-control" />
+            <ValidationMessage For="@(() => book.Title)" />
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label>Category: </label>
+        <div>
+            <select @bind="book.CategoryId" class="form-control">
+                <option value="">-- Select Category --</option>
+                @if (Categories != null)
+                {
+                    foreach (var category in Categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                }
+            </select>
+            <ValidationMessage For="@(() => book.CategoryId)" />
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label>Author: </label>
+        <div>
+            <InputSelect @bind-Value="book.AuthorId" class="form-control">
+                <option value="">-- Select Author --</option>
+                @if (Authors != null)
+                {
+                    foreach (var author in Authors)
+                    {
+                        <option value="@author.Id">@author.Name</option>
+                    }
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => book.AuthorId)" />
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label>Publisher: </label>
+        <div>
+            <select @bind="book.PublisherId" class="form-control">
+                <option value="">-- Select Publisher --</option>
+                @if (Publishers != null)
+                {
+                    foreach (var publisher in Publishers)
+                    {
+                        <option value="@publisher.Id">@publisher.Name</option>
+                    }
+                }
+            </select>
+            <ValidationMessage For="@(() => book.PublisherId)" />
+        </div>
+
+    </div>
+    <button type="submit" class="btn btn-block btn-success">
+        @ButtonText
+    </button>
+    <BackToList Target="books" />
+</EditForm>
+
+@code {
+    private IList<Author> Authors;
+    private IList<Category> Categories;
+    private IList<Publisher> Publishers;
+
+    protected async override Task OnInitializedAsync()
+    {
+        Authors = await _client.GetFromJsonAsync<List<Author>>($"{Endpoints.AuthorsEndpoint}");
+        Categories = await _client.GetFromJsonAsync<List<Category>>($"{Endpoints.CategoriesEndpoint}");
+        Publishers = await _client.GetFromJsonAsync<List<Publisher>>($"{Endpoints.PublishersEndpoint}");
+    }
+
+    [Parameter] public Book book { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+}

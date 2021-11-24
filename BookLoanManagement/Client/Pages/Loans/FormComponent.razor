@@ -1,0 +1,68 @@
+﻿@inject HttpClient _client
+<EditForm Model="@loan" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label>Book: </label>
+        <div>
+            <select @bind="loan.BookId" class="form-control">
+                <option value="">-- Select Book --</option>
+                @if (Books != null)
+                {
+                    foreach (var book in Books)
+                    {
+                        <option value="@book.Id">@book.Title | @book.Category.Name | @book.Author.Name</option>
+                    }
+                }
+            </select>
+            <ValidationMessage For="@(() => loan.BookId)" />
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label>Customer: </label>
+        <div>
+            <InputSelect @bind-Value="loan.CustomerId" class="form-control">
+                <option value="">-- Select Customer --</option>
+                @if (Customers != null)
+                {
+                    foreach (var customer in Customers)
+                    {
+                        <option value="@customer.Id">@customer.Name | @customer.Email</option>
+                    }
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => loan.CustomerId)" />
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label>Date Out: </label>
+        <div>
+            <InputDate @bind-Value="@loan.DateOut" class="form-control" />
+            <ValidationMessage For="@(() => loan.DateOut)" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-block btn-success">
+        Create Book
+    </button>
+    <BackToList Target="loans" />
+</EditForm>
+
+@code {
+    [Parameter] public Loan loan { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+
+    private IList<Book> Books;
+    private IList<Customer> Customers;
+
+    protected async override Task OnInitializedAsync()
+    {
+        Books = await _client.GetFromJsonAsync<List<Book>>($"{Endpoints.BooksEndpoint}");
+        Customers = await _client.GetFromJsonAsync<List<Customer>>($"{Endpoints.CustomersEndpoint}");
+    }
+
+}

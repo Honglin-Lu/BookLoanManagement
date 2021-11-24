@@ -1,0 +1,24 @@
+﻿
+<EditForm Model="@publisher" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label>Publisher Name: </label>
+        <div>
+            <InputText @bind-Value="@publisher.Name" class="form-control" />
+            <ValidationMessage For="@(() => publisher.Name)" />
+        </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-block btn-success">
+        @ButtonText
+    </button>
+    <BackToList Target="publishers" />
+</EditForm>
+@code {
+    [Parameter] public Publisher publisher { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+}

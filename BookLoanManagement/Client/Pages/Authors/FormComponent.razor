@@ -1,0 +1,25 @@
+﻿
+<EditForm Model="@author" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label>Author Name: </label>
+        <div>
+            <InputText @bind-Value="@author.Name" class="form-control" />
+            <ValidationMessage For="@(() => author.Name)" />
+        </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-block btn-success">
+        @ButtonText
+    </button>
+    <BackToList Target="authors" />
+
+</EditForm>
+@code {
+    [Parameter] public Author author { get; set; }
+    [Parameter] public string ButtonText { get; set; } = "Save";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+}
