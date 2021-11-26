@@ -40,12 +40,12 @@ else
                     <td>@loan.Book.Title</td>
                     <td>@loan.Customer.Name</td>
                     <td>@loan.DateCreated.Date.ToString("dd MMMM yyyy")</td>
-                    <td>@((loan.DateIn - loan.DateOut).TotalDays.ToString())</td>
+                    <td>@(loan.DateIn != null ? (loan.DateIn.Value - loan.DateOut).TotalDays.ToString() : "To Be Determined")</td>
                     <td>
                         <a href="/loans/view/@loan.Id" class="btn btn-primary">
                             <span class="oi oi-book"></span>
                         </a>
-                        <a href="/loanss/edit/@loan.Id" class="btn btn-warning">
+                        <a href="/loans/edit/@loan.Id" class="btn btn-warning">
                             <span class="oi oi-pencil"></span>
                         </a>
                         <button class="btn btn-danger" @onclick="@(()=>Delete(loan.Id))">

@@ -1,4 +1,5 @@
 ﻿@inject HttpClient _client
+
 <EditForm Model="@loan" OnValidSubmit="@OnValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
@@ -45,8 +46,20 @@
             <ValidationMessage For="@(() => loan.DateOut)" />
         </div>
     </div>
+
+    @if (loan.Id > 0)
+    {
+        <div class="form-group">
+            <label>Date In: </label>
+            <div>
+                <InputDate @bind-Value="@loan.DateIn" class="form-control" />
+                <ValidationMessage For="@(() => loan.DateIn)" />
+            </div>
+        </div>
+    }
+
     <button type="submit" class="btn btn-block btn-success">
-        Create Book
+        @ButtonText
     </button>
     <BackToList Target="loans" />
 </EditForm>

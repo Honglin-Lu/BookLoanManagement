@@ -4,14 +4,16 @@ using BookLoanManagement.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookLoanManagement.Server.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211125035829_MadeDataInNull")]
+    partial class MadeDataInNull
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -121,8 +123,8 @@ namespace BookLoanManagement.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 25, 22, 26, 24, 123, DateTimeKind.Local).AddTicks(900),
-                            DateUpdated = new DateTime(2021, 11, 25, 22, 26, 24, 125, DateTimeKind.Local).AddTicks(3120),
+                            DateCreated = new DateTime(2021, 11, 24, 22, 58, 29, 64, DateTimeKind.Local).AddTicks(2371),
+                            DateUpdated = new DateTime(2021, 11, 24, 22, 58, 29, 66, DateTimeKind.Local).AddTicks(6643),
                             Name = "Anna",
                             UpdatedBy = "System"
                         },
@@ -130,8 +132,8 @@ namespace BookLoanManagement.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 25, 22, 26, 24, 125, DateTimeKind.Local).AddTicks(4071),
-                            DateUpdated = new DateTime(2021, 11, 25, 22, 26, 24, 125, DateTimeKind.Local).AddTicks(4084),
+                            DateCreated = new DateTime(2021, 11, 24, 22, 58, 29, 66, DateTimeKind.Local).AddTicks(7588),
+                            DateUpdated = new DateTime(2021, 11, 24, 22, 58, 29, 66, DateTimeKind.Local).AddTicks(7599),
                             Name = "Mark",
                             UpdatedBy = "System"
                         });
@@ -210,8 +212,8 @@ namespace BookLoanManagement.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 25, 22, 26, 24, 126, DateTimeKind.Local).AddTicks(8821),
-                            DateUpdated = new DateTime(2021, 11, 25, 22, 26, 24, 126, DateTimeKind.Local).AddTicks(8834),
+                            DateCreated = new DateTime(2021, 11, 24, 22, 58, 29, 68, DateTimeKind.Local).AddTicks(2298),
+                            DateUpdated = new DateTime(2021, 11, 24, 22, 58, 29, 68, DateTimeKind.Local).AddTicks(2311),
                             Name = "Romance",
                             UpdatedBy = "System"
                         },
@@ -219,8 +221,8 @@ namespace BookLoanManagement.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 25, 22, 26, 24, 126, DateTimeKind.Local).AddTicks(9233),
-                            DateUpdated = new DateTime(2021, 11, 25, 22, 26, 24, 126, DateTimeKind.Local).AddTicks(9242),
+                            DateCreated = new DateTime(2021, 11, 24, 22, 58, 29, 68, DateTimeKind.Local).AddTicks(2627),
+                            DateUpdated = new DateTime(2021, 11, 24, 22, 58, 29, 68, DateTimeKind.Local).AddTicks(2635),
                             Name = "Historical",
                             UpdatedBy = "System"
                         },
@@ -228,8 +230,8 @@ namespace BookLoanManagement.Server.Data.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 25, 22, 26, 24, 126, DateTimeKind.Local).AddTicks(9246),
-                            DateUpdated = new DateTime(2021, 11, 25, 22, 26, 24, 126, DateTimeKind.Local).AddTicks(9249),
+                            DateCreated = new DateTime(2021, 11, 24, 22, 58, 29, 68, DateTimeKind.Local).AddTicks(2638),
+                            DateUpdated = new DateTime(2021, 11, 24, 22, 58, 29, 68, DateTimeKind.Local).AddTicks(2640),
                             Name = "Dictionary",
                             UpdatedBy = "System"
                         },
@@ -237,8 +239,8 @@ namespace BookLoanManagement.Server.Data.Migrations
                         {
                             Id = 4,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 25, 22, 26, 24, 126, DateTimeKind.Local).AddTicks(9251),
-                            DateUpdated = new DateTime(2021, 11, 25, 22, 26, 24, 126, DateTimeKind.Local).AddTicks(9253),
+                            DateCreated = new DateTime(2021, 11, 24, 22, 58, 29, 68, DateTimeKind.Local).AddTicks(2642),
+                            DateUpdated = new DateTime(2021, 11, 24, 22, 58, 29, 68, DateTimeKind.Local).AddTicks(2644),
                             Name = "Science",
                             UpdatedBy = "System"
                         });
@@ -261,16 +263,12 @@ namespace BookLoanManagement.Server.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
@@ -352,8 +350,8 @@ namespace BookLoanManagement.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 25, 22, 26, 24, 126, DateTimeKind.Local).AddTicks(5356),
-                            DateUpdated = new DateTime(2021, 11, 25, 22, 26, 24, 126, DateTimeKind.Local).AddTicks(5374),
+                            DateCreated = new DateTime(2021, 11, 24, 22, 58, 29, 67, DateTimeKind.Local).AddTicks(8803),
+                            DateUpdated = new DateTime(2021, 11, 24, 22, 58, 29, 67, DateTimeKind.Local).AddTicks(8818),
                             Name = "BYM",
                             UpdatedBy = "System"
                         },
@@ -361,8 +359,8 @@ namespace BookLoanManagement.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2021, 11, 25, 22, 26, 24, 126, DateTimeKind.Local).AddTicks(5694),
-                            DateUpdated = new DateTime(2021, 11, 25, 22, 26, 24, 126, DateTimeKind.Local).AddTicks(5703),
+                            DateCreated = new DateTime(2021, 11, 24, 22, 58, 29, 67, DateTimeKind.Local).AddTicks(9145),
+                            DateUpdated = new DateTime(2021, 11, 24, 22, 58, 29, 67, DateTimeKind.Local).AddTicks(9154),
                             Name = "SXS",
                             UpdatedBy = "System"
                         });
@@ -500,15 +498,15 @@ namespace BookLoanManagement.Server.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "84757fcf-8772-4e92-a745-dbbd7ddfd4ff",
-                            ConcurrencyStamp = "e017c227-b8fc-4b0b-9ff3-9fd4880ed89d",
+                            Id = "266a63e5-f115-4785-b043-25d2e789dfee",
+                            ConcurrencyStamp = "4991e597-4de2-4458-adc1-8314ebdf111e",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "1fcdb003-c783-43b1-86b8-78b6a55dd5f5",
-                            ConcurrencyStamp = "eabca4e0-8830-400e-b522-ca531e46c871",
+                            Id = "5b2b1675-a431-40bf-a758-15130bf926a6",
+                            ConcurrencyStamp = "c99c8b2e-9786-4996-a4f1-9d97ebe54103",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
