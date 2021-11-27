@@ -1,0 +1,18 @@
+﻿@page "/loans/view/{id:int}"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+<h3>View</h3>
+<FormComponent loan="loan" Disabled="true" />
+
+@code {
+    [Parameter] public int id { get; set; }
+    Loan loan = new Loan();
+
+    protected async override Task OnParametersSetAsync()
+    {
+        loan = await _client.GetFromJsonAsync<Loan>($"{Endpoints.LoansEndpoint}/{id}");
+    }
+
+    
+}
