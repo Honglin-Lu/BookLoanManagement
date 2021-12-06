@@ -1,6 +1,7 @@
 ﻿@page "/publishers/"
 @inject HttpClient _client
 @inject IJSRuntime js
+@implements IDisposable
 @attribute [Authorize]
 
 
@@ -22,7 +23,7 @@
 }
 else
 {
-    <table class="table table-responsive">
+    <table class="table" id="publishersTable">
         <thead>
             <tr>
                 <th>Name</th>
@@ -58,6 +59,16 @@ else
     protected async override Task OnInitializedAsync()
     {
         Publishers = await _client.GetFromJsonAsync<List<Publisher>>($"{Endpoints.PublishersEndpoint}");
+    }
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        await js.InvokeVoidAsync("AddDataTable", "#publishersTable");
+    }
+
+    void IDisposable.Dispose()
+    {
+        js.InvokeVoidAsync("DataTableDispose", "#publishersTable");
     }
 
     async Task Delete(int publisherId)

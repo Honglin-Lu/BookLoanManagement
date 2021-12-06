@@ -1,6 +1,7 @@
 ﻿@page "/books/"
 @inject HttpClient _client
 @inject IJSRuntime js
+@implements IDisposable
 @attribute [Authorize]
 
 
@@ -23,7 +24,7 @@
 }
 else
 {
-    <table class="table">
+    <table class="table" id="booksTable">
         <thead>
             <tr>
                 <th>Book Title</th>
@@ -36,23 +37,23 @@ else
         <tbody>
             @foreach (var book in Books)
             {
-            <tr>
-                <td>@book.Title</td>
-                <td>@book.Category.Name</td>
-                <td>@book.Author.Name</td>
-                <td>@book.Publisher.Name</td>
-                <td>
-                    <a href="/books/view/@book.Id" class="btn btn-primary">
-                        <span class="oi oi-book"></span>
-                    </a>
-                    <a href="/books/edit/@book.Id" class="btn btn-warning">
-                        <span class="oi oi-pencil"></span>
-                    </a>
-                    <button class="btn btn-danger" @onclick="@(()=>Delete(book.Id))">
-                        <span class="oi oi-delete"></span>
-                    </button>
-                </td>
-            </tr>
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@book.Category.Name</td>
+                    <td>@book.Author.Name</td>
+                    <td>@book.Publisher.Name</td>
+                    <td>
+                        <a href="/books/view/@book.Id" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <a href="/books/edit/@book.Id" class="btn btn-warning">
+                            <span class="oi oi-pencil"></span>
+                        </a>
+                        <button class="btn btn-danger" @onclick="@(()=>Delete(book.Id))">
+                            <span class="oi oi-delete"></span>
+                        </button>
+                    </td>
+                </tr>
             }
         </tbody>
 
@@ -65,6 +66,16 @@ else
     protected async override Task OnInitializedAsync()
     {
         Books = await _client.GetFromJsonAsync<List<Book>>($"{Endpoints.BooksEndpoint}");
+    }
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        await js.InvokeVoidAsync("AddDataTable", "#booksTable");
+    }
+
+    void IDisposable.Dispose()
+    {
+        js.InvokeVoidAsync("DataTableDispose", "#booksTable");
     }
 
     async Task Delete(int bookId)
